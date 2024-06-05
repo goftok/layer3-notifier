@@ -56,7 +56,7 @@ def get_quests(last_id):
         return process_items(items, last_id)
     except Exception as e:
         error_message = f"Error: {e}"
-        send_telegram_message(BOT_TOKEN, CHAT_ID, error_message)
+        # send_telegram_message(BOT_TOKEN, CHAT_ID, error_message)
         return last_id
 
 
