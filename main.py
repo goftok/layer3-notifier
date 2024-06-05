@@ -1,8 +1,13 @@
+import os
 import time
 import json
 import gzip
 import http.client
 from io import BytesIO
+import logging
+
+from art import tprint
+
 
 from headers import headers
 from my_secrets import BOT_TOKEN, CHAT_ID
@@ -10,7 +15,10 @@ from utils import create_telegram_message, send_telegram_message
 
 MAIN_LINK = "app.layer3.xyz"
 SUB_LINK = "/api/trpc/quest.newQuestsForUser" "?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22cursor%22%3A0%7D%7D%7D"
-SLEEP_TIME = 30
+SLEEP_TIME = os.getenv("SLEEP_TIME", 60)
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s:%(message)s")
 
 
 def fetch_data(conn):
@@ -53,8 +61,10 @@ def get_quests(last_id):
 
 
 def main():
+    tprint("Layer3 Notifier")
     last_id = None
     while True:
+        logging.info(f"Checking for new quests, current last_id: {last_id}")
         last_id = get_quests(last_id)
         time.sleep(SLEEP_TIME)
 
