@@ -15,7 +15,7 @@ from utils import create_telegram_message, send_telegram_message
 
 MAIN_LINK = "app.layer3.xyz"
 SUB_LINK = "/api/trpc/quest.newQuestsForUser" "?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22cursor%22%3A0%7D%7D%7D"
-SLEEP_TIME = os.getenv("SLEEP_TIME", 60)
+SLEEP_TIME = int(os.getenv("SLEEP_TIME", 60))
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s:%(message)s")
