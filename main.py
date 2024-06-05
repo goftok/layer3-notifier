@@ -9,9 +9,7 @@ from my_secrets import BOT_TOKEN, CHAT_ID
 from utils import create_telegram_message, send_telegram_message
 
 MAIN_LINK = "app.layer3.xyz"
-SUB_LINK = (
-    "/api/trpc/quest.newQuestsForUser" "?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22cursor%22%3A4179%7D%7D%7D"
-)
+SUB_LINK = "/api/trpc/quest.newQuestsForUser" "?batch=1&input=%7B%220%22%3A%7B%22json%22%3A%7B%22cursor%22%3A0%7D%7D%7D"
 SLEEP_TIME = 30
 
 
